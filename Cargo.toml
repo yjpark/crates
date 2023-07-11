@@ -1,0 +1,46 @@
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/edger-dev/crates"
+repository = "https://github.com/edger-dev/crates"
+
+[workspace]
+resolver = "2"
+members = [
+    "bevy/util",
+    "bevy/shape",
+    "bevy/view",
+    "bevy/egui",
+    "bevy/app",
+]
+
+[workspace.dependencies]
+edger_bevy_app = { path = "bevy/app" }
+edger_bevy_egui = { path = "bevy/egui" }
+edger_bevy_view = { path = "bevy/view" }
+edger_bevy_shape = { path = "bevy/shape" }
+edger_bevy_util = { path = "bevy/util" }
+
+bevy = { version = "0.10.1", default-features = false }
+
+bevy_egui = { version = "0.20.3" }
+
+bevy_prototype_lyon = "0.8.0"
+
+snafu = "0.7.4"
+serde = { version = "1.0.164", features = ["derive", "alloc"] }
+clap = { version = "4.3.9", features = [ "derive" ] }
+
+rand = "0.8.5"
+
+# [target.'cfg(target_arch = "wasm32")'.workspace.dependencies]
+wasm-bindgen = "0.2.87"
+console_error_panic_hook = "0.1.7"
+gloo-events = "0.1.2"
+futures = "0.3.28"
+web-sys = { version = "0.3.64", features = [
+    "Element", "Document", "Window", "Location", "Url", "UrlSearchParams", "console", "TouchEvent",
+    #https://rustwasm.github.io/docs/wasm-bindgen/examples/web-audio.html
+    "AudioContext", "AudioDestinationNode", "AudioNode", "AudioParam", "GainNode", "OscillatorNode", "OscillatorType",
+]}
+

@@ -1,0 +1,66 @@
+[package]
+publish = false
+name = "edger_bevy_app"
+version = "0.1.0"
+
+edition = { workspace = true }
+license = { workspace = true }
+homepage = { workspace = true }
+repository = { workspace = true }
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = [
+    "bevy/bevy_gltf",
+    "bevy/bevy_winit",
+    "bevy/bevy_render",
+    "bevy/png",
+]
+
+native = [
+    "clap",
+    "bevy/x11",
+    "bevy/wayland",
+]
+
+shape = [
+    "edger_bevy_shape",
+]
+
+view = [
+    "edger_bevy_view",
+]
+
+view_shape = [
+    "shape",
+    "view",
+    "edger_bevy_view/shape",
+]
+
+egui = [
+    "edger_bevy_egui",
+]
+
+all = [
+    "native",
+    "view_shape",
+    "egui",
+]
+
+[dependencies]
+edger_bevy_util = { workspace = true }
+edger_bevy_shape = { workspace = true, optional = true }
+edger_bevy_view = { workspace = true, optional = true }
+edger_bevy_egui = { workspace = true, optional = true }
+
+bevy = { workspace = true }
+
+clap = { workspace = true, optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = { workspace = true }
+console_error_panic_hook = { workspace = true }
+gloo-events = { workspace = true }
+futures = { workspace = true }
+web-sys = { workspace = true }
