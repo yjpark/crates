@@ -1,13 +1,13 @@
 pub use bevy;
 
 #[cfg(feature = "shape")]
-pub use edger_bevy_shape
+pub use edger_bevy_shape;
 
 #[cfg(feature = "view")]
-pub use edger_bevy_view
+pub use edger_bevy_view;
 
 #[cfg(feature = "egui")]
-pub use edger_bevy_egui
+pub use edger_bevy_egui;
 
 pub mod prelude {
     #[cfg(feature = "shape")]
