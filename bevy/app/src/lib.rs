@@ -1,14 +1,24 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub use bevy;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[cfg(feature = "shape")]
+pub use edger_bevy_shape
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+#[cfg(feature = "view")]
+pub use edger_bevy_view
+
+#[cfg(feature = "egui")]
+pub use edger_bevy_egui
+
+pub mod prelude {
+    #[cfg(feature = "shape")]
+    #[doc(hidden)]
+    pub use edger_bevy_shape::prelude::*;
+
+    #[cfg(feature = "view")]
+    #[doc(hidden)]
+    pub use edger_bevy_view::prelude::*;
+
+    #[cfg(feature = "egui")]
+    #[doc(hidden)]
+    pub use edger_bevy_egui::prelude::*;
 }
