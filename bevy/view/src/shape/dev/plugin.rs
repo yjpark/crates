@@ -9,8 +9,8 @@ pub struct ViewShapeDevPlugin;
 impl Plugin for ViewShapeDevPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<ViewShapeDevTheme>();
-        app.add_system(on_add_layout_data);
-        app.add_system(on_layout_data_changed);
+        app.add_systems(Update, on_add_layout_data);
+        app.add_systems(Update, on_layout_data_changed);
     }
 }
 

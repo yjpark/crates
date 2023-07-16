@@ -17,7 +17,7 @@ where
     pub view: T,
 }
 
-#[derive(Debug)]
+#[derive(Event, Debug)]
 pub struct DoLayoutEvent<TE, T>
 where
     TE: LayoutEnv,
@@ -57,7 +57,7 @@ where
     }
     pub fn setup(app: &mut App) {
         app.add_event::<Self>();
-        app.add_system(Self::on_layout_changed);
+        app.add_systems(Update, Self::on_layout_changed);
     }
 }
 

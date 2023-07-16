@@ -44,7 +44,7 @@ impl ShapeOp<(), FillRectangle> for ColorBackground {
 
 impl ColorBackground {
     pub fn setup(app: &mut App) {
-        app.add_system(Self::on_layout_changed);
+        app.add_systems(Update, Self::on_layout_changed);
     }
     pub fn on_layout_changed(
         mut commands: Commands,

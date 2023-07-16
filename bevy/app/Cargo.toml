@@ -15,6 +15,9 @@ default = [
     "bevy/bevy_gltf",
     "bevy/bevy_winit",
     "bevy/bevy_render",
+    "bevy/bevy_sprite",
+    "bevy/bevy_asset",
+    "bevy/bevy_text",
     "bevy/png",
 ]
 

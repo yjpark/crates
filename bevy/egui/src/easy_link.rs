@@ -1,4 +1,4 @@
-use bevy::prelude::EventWriter;
+use bevy::prelude::{EventWriter, Event, App};
 use bevy_egui::egui::{self, *};
 use crate::easy_mark::easy_mark_parser::Style;
 
@@ -17,7 +17,7 @@ pub struct EasyLink {
     style: Style,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Event, Clone, Debug)]
 pub struct EasyLinkEvent {
     pub link: String,
     pub new_tab: bool,
@@ -25,6 +25,9 @@ pub struct EasyLinkEvent {
 impl EasyLinkEvent {
     pub fn new(link: String, new_tab: bool) -> Self {
         Self { link, new_tab, }
+    }
+    pub fn setup(app: &mut App) {
+        app.add_event::<Self>();
     }
 }
 impl From<String> for EasyLinkEvent {

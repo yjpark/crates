@@ -1,7 +1,6 @@
 pub use bevy_egui;
 pub use bevy_egui::egui;
 
-pub mod util;
 pub mod easy_link;
 pub mod helper;
 
@@ -26,5 +25,5 @@ pub mod prelude {
     pub use crate::easy_link::{EasyLink, EasyLinkEvent};
 
     #[doc(hidden)]
-    pub use crate::helper::{label_from_style, link_from_style};
+    pub use crate::helper::{color_to_hsva, label_from_style, link_from_style};
 }

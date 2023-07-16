@@ -21,11 +21,11 @@ edger_bevy_view = { path = "bevy/view" }
 edger_bevy_shape = { path = "bevy/shape" }
 edger_bevy_util = { path = "bevy/util" }
 
-bevy = { version = "0.10.1", default-features = false }
+bevy = { version = "0.11.0", default-features = false }
 
-bevy_egui = { version = "0.20.3" }
+bevy_egui = { version = "0.21.0" }
 
-bevy_prototype_lyon = "0.8.0"
+bevy_prototype_lyon = "0.9.0"
 
 snafu = "0.7.4"
 serde = { version = "1.0.164", features = ["derive", "alloc"] }
