@@ -1,9 +1,8 @@
 use bevy::asset::{AssetLoader, LoadContext, LoadedAsset};
 use bevy::reflect::{TypeUuid, TypePath};
 use bevy::utils::BoxedFuture;
-use serde::Deserialize;
 
-#[derive(Debug, Deserialize, TypeUuid, TypePath)]
+#[derive(Debug, TypeUuid, TypePath)]
 #[uuid = "ae3cb724-f08b-4ceb-a7dd-c7d6781ba49b"]
 pub struct MarkDownAsset {
     pub text: String,

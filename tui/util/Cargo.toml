@@ -1,6 +1,6 @@
 [package]
 publish = false
-name = "edger_bevy_util"
+name = "edger_tui_util"
 version = "0.1.0"
 
 edition.workspace = true
@@ -8,16 +8,7 @@ license.workspace = true
 homepage.workspace = true
 repository.workspace = true
 
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[features]
-default = [
-    "bevy/bevy_render",
-    "bevy/bevy_sprite",
-    "bevy/bevy_asset",
-    "bevy/bevy_text",
-]
-
 [dependencies]
-bevy = { workspace = true, default-features = false }
+tracing.workspace = true

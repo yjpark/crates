@@ -13,6 +13,10 @@ pub mod prelude {
     #[doc(hidden)]
     pub use edger_bevy_util::prelude::*;
 
+    #[cfg(feature = "shape")]
+    #[doc(hidden)]
+    pub use crate::shape::prelude::*;
+
     #[doc(hidden)]
     pub use crate::bundle::view_bundle::ViewBundle;
     #[doc(hidden)]
@@ -30,8 +34,4 @@ pub mod prelude {
         DoLayoutEvent, LayoutChangedQuery, LayoutChangedWithChildrenQuery, LayoutEnv, LayoutQuery,
         View, ViewAddedQuery, ViewEntity, ViewQuery, ViewRootAddedQuery, ViewRootQuery,
     };
-
-    #[cfg(feature = "shape")]
-    #[doc(hidden)]
-    pub use crate::shape::prelude::*;
 }
