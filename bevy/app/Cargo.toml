@@ -29,16 +29,11 @@ native = [
 
 shape = [
     "edger_bevy_shape",
+    "edger_bevy_view?/shape",
 ]
 
 view = [
     "edger_bevy_view",
-]
-
-view_shape = [
-    "shape",
-    "view",
-    "edger_bevy_view/shape",
 ]
 
 egui = [
@@ -47,7 +42,8 @@ egui = [
 
 all = [
     "native",
-    "view_shape",
+    "view",
+    "shape",
     "egui",
 ]
 

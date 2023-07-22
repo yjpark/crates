@@ -56,7 +56,7 @@ impl ConfigLoader {
             Config : Default + std::fmt::Debug
                 + serde::ser::Serialize
                 + serde::de::Deserialize<'de>,
-            Args : Default + serde::ser::Serialize,
+            Args : serde::ser::Serialize,
     {
         self.load_with_extras(|figment| {
             figment.merge(Serialized::defaults(args))
