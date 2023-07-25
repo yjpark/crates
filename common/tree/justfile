@@ -1,0 +1,18 @@
+watch:
+    cargo watch -s 'clear-buffer ; cargo build'
+build-everything:
+    just build-default
+    just build-indexmap
+    just build-dashmap
+    just build-serde
+    just build-all
+build-default:
+    cargo build
+build-indexmap:
+    cargo build --features "indexmap"
+build-dashmap:
+    cargo build --features "dashmap"
+build-serde:
+    cargo build --features "serde"
+build-all:
+    cargo build --features "all"

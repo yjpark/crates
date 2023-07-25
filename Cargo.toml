@@ -7,6 +7,7 @@ repository = "https://github.com/edger-dev/crates"
 [workspace]
 resolver = "2"
 members = [
+    "common/tree",
     "common/args",
     "common/config",
     "common/template",
@@ -25,6 +26,7 @@ members = [
 edger_args = { path = "common/args" }
 edger_config = { path = "common/config" }
 edger_template = { path = "common/template" }
+edger_tree = { path = "common/tree" }
 
 edger_bevy_app = { path = "bevy/app" }
 edger_bevy_egui = { path = "bevy/egui" }
@@ -48,6 +50,9 @@ deref-derive = "0.1.0"
 
 rand = "0.8.5"
 derive_builder = { version = "0.12.0" }
+
+indexmap = { version = "2.0.0" }
+dashmap = { version = "5.5.0" }
 
 # Tui
 tracing = "0.1.37"
