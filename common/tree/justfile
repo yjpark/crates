@@ -1,5 +1,3 @@
-watch:
-    cargo watch -s 'clear-buffer ; cargo build'
 build-everything:
     just build-default
     just build-indexmap
