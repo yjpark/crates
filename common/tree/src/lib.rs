@@ -12,6 +12,9 @@ pub mod dashmap;
 mod macros;
 mod impls;
 
+#[cfg(feature = "serde")]
+pub mod serde;
+
 pub mod prelude {
     #[doc(hidden)]
     pub use super::id::Identifiable;

@@ -10,8 +10,8 @@ macro_rules! impl_tree {
         {
             type Id = Id;
 
-            fn id(&self) -> &Id {
-                &self.id
+            fn id(&self) -> Id {
+                self.id.clone()
             }
         }
 
@@ -65,16 +65,44 @@ macro_rules! impl_tree {
         impl<Id, Data, Parent, Child, Item> $type<Id, Data, Parent, Child, Item>
             where
                 Id: Eq + Hash + Clone,
+                Parent: AsRef<Self> + Clone,
+                Child: AsRef<Self>,
+                Item: Identifiable,
+        {
+            pub fn get_parent(&self) -> Option<Parent> {
+                self.parent().map(|x| x.clone() )
+            }
+            pub fn get_root(&self) -> Option<Parent> {
+                let mut last = None;
+                let mut parent = self.parent();
+                while true {
+                    match parent {
+                        Some(p) => {
+                            last = Some(p.clone());
+                            parent = p.as_ref().parent();
+                        },
+                        None => {
+                            return last;
+                        }
+                    }
+                }
+                None
+            }
+        }
+
+        impl<Id, Data, Parent, Child, Item> $type<Id, Data, Parent, Child, Item>
+            where
+                Id: Eq + Hash + Clone,
                 Parent: AsRef<Self>,
                 Child: AsRef<Self> + Clone,
                 Item: Identifiable,
         {
-            pub fn get_node(&self, id: &Id) -> Option<Child> {
+            pub fn deep_get_child(&self, id: &Id) -> Option<Child> {
                 if let Some(child) = self.get_child(id) {
                     return Some(child);
                 }
                 self.each_child(&|child| {
-                    if let Some(child) = child.as_ref().get_node(id) {
+                    if let Some(child) = child.as_ref().deep_get_child(id) {
                         return Some(child.clone());
                     }
                     None
@@ -89,12 +117,12 @@ macro_rules! impl_tree {
                 Child: AsRef<Self>,
                 Item: Identifiable + Clone,
         {
-            pub fn get_node_item(&self, id: &Item::Id) -> Option<Item> {
+            pub fn deep_get_item(&self, id: &Item::Id) -> Option<Item> {
                 if let Some(item) = self.get_item(id) {
                     return Some(item);
                 }
                 self.each_child(&|child| {
-                    if let Some(item) = child.as_ref().get_node_item(id) {
+                    if let Some(item) = child.as_ref().deep_get_item(id) {
                         return Some(item.clone());
                     }
                     None

@@ -1,5 +1,5 @@
 use std::hash::Hash;
-use dashmap::DashMap;
+pub use dashmap::DashMap;
 
 use crate::prelude::{Identifiable, Tree};
 
