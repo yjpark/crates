@@ -23,7 +23,10 @@ pub trait DoubleShape<T1: Geometry, T2: Geometry>: Shape {
         op
             .insert(ShapeBundle{
                 path: multishape.build(),
-                transform: self.get_transform(),
+                spatial: SpatialBundle {
+                    transform: self.get_transform(),
+                    ..default()
+                },
                 ..default()
             });
         if let Some(fill) = self.get_fill() {

@@ -9,7 +9,8 @@ pub struct SingleBundle<T: Component> {
     pub transform: Transform,
     pub global_transform: GlobalTransform,
     pub visibility: Visibility,
-    pub computed_visibility: ComputedVisibility,
+    pub inherited_visibility: InheritedVisibility,
+    pub view_visibility: ViewVisibility,
 }
 
 impl<T: Component> From<(String, T, Transform)> for SingleBundle<T> {
@@ -20,7 +21,8 @@ impl<T: Component> From<(String, T, Transform)> for SingleBundle<T> {
             transform: v.2,
             global_transform: GlobalTransform::default(),
             visibility: Visibility::default(),
-            computed_visibility: ComputedVisibility::default(),
+            inherited_visibility: InheritedVisibility::default(),
+            view_visibility: ViewVisibility::default(),
         }
     }
 }

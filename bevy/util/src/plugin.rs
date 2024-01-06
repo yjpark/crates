@@ -6,7 +6,7 @@ pub struct UtilsPlugin;
 
 impl Plugin for UtilsPlugin {
     fn build(&self, app: &mut App) {
-        app.add_asset::<MarkDownAsset>();
-        app.init_asset_loader::<MarkDownAssetLoader>();
+        app.register_asset_loader(MarkDownAssetLoader)
+            .init_asset::<MarkDownAsset>();
     }
 }

@@ -21,3 +21,4 @@ default = [
 
 [dependencies]
 bevy = { workspace = true, default-features = false }
+anyhow = { workspace = true }

@@ -31,7 +31,10 @@ pub trait SingleShape<T: Geometry>: Shape {
         op
             .insert(ShapeBundle {
                 path: GeometryBuilder::build_as(&shape),
-                transform: self.get_transform(),
+                spatial: SpatialBundle {
+                    transform: self.get_transform(),
+                    ..default()
+                },
                 ..default()
             });
         if let Some(fill) = self.get_fill() {
