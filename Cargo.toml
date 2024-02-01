@@ -34,6 +34,8 @@ edger_bevy_view = { path = "bevy/view" }
 edger_bevy_shape = { path = "bevy/shape" }
 edger_bevy_util = { path = "bevy/util" }
 
+edger_dioxus_app = { path = "dioxus/app" }
+
 edger_tui_app = { path = "tui/app" }
 edger_tui_util = { path = "tui/util" }
 
@@ -76,3 +78,13 @@ web-sys = { version = "0.3.64", features = [
     #https://rustwasm.github.io/docs/wasm-bindgen/examples/web-audio.html
     "AudioContext", "AudioDestinationNode", "AudioNode", "AudioParam", "GainNode", "OscillatorNode", "OscillatorType",
 ]}
+
+# dioxus
+dioxus = { version = "0.4.3" }
+dioxus-web = { version = "0.4.3" }
+dioxus-ssr = { version = "0.4.3" }
+dioxus-router = { version = "0.4.3" }
+fermi = { version = "0.4.3" }
+
+dioxus-daisyui = { path = "../dioxus-daisyui/crates/dioxus-daisyui" }
+# dioxus-daisyui = { version = "0.4.0" }
