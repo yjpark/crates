@@ -18,6 +18,9 @@
 - add imports
 
 ```
+// use egui::*;
+use bevy_egui::egui::*;
+
 use bevy::prelude::EventWriter;
 use crate::egui::EasyLinkEvent;
 ```
@@ -32,6 +35,6 @@ use crate::egui::EasyLinkEvent;
             let label = rich_text_from_style(text, &style);
             ui.add(Hyperlink::from_label_and_url(label, url));
              */
-            crate::egui::EasyLink::new(url, text, style).ui(ui, link_evts);
+            crate::easy_link::EasyLink::new(url, text, style).ui(ui, link_evts);
         }
 ```

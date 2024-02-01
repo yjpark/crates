@@ -1,6 +1,6 @@
 use super::easy_mark_parser as easy_mark;
-use crate::egui::*;
 
+use bevy_egui::egui::*;
 use bevy::prelude::EventWriter;
 use crate::prelude::EasyLinkEvent;
 
@@ -41,14 +41,28 @@ pub fn item_ui(ui: &mut Ui, item: easy_mark::Item<'_>, link_evts: &mut EventWrit
         }
 
         easy_mark::Item::Text(style, text) => {
-            ui.label(rich_text_from_style(text, &style));
+            let label = rich_text_from_style(text, &style);
+            if style.small && !style.raised {
+                ui.with_layout(Layout::left_to_right(Align::BOTTOM), |ui| {
+                    ui.set_min_height(row_height);
+                    ui.label(label);
+                });
+            } else {
+                ui.label(label);
+            }
         }
         easy_mark::Item::Hyperlink(style, text, url) => {
-            /*
             let label = rich_text_from_style(text, &style);
-            ui.add(Hyperlink::from_label_and_url(label, url));
-             */
-            crate::prelude::EasyLink::new(url, text, style).ui(ui, link_evts);
+            if style.small && !style.raised {
+                ui.with_layout(Layout::left_to_right(Align::BOTTOM), |ui| {
+                    ui.set_height(row_height);
+                    //ui.add(Hyperlink::from_label_and_url(label, url));
+                    crate::easy_link::EasyLink::new(url, text, style).ui(ui, link_evts);
+                });
+            } else {
+                //ui.add(Hyperlink::from_label_and_url(label, url));
+                crate::easy_link::EasyLink::new(url, text, style).ui(ui, link_evts);
+            }
         }
 
         easy_mark::Item::Separator => {
@@ -152,7 +166,7 @@ fn numbered_point(ui: &mut Ui, width: f32, number: &str) -> Response {
     let font_id = TextStyle::Body.resolve(ui.style());
     let row_height = ui.fonts(|f| f.row_height(&font_id));
     let (rect, response) = ui.allocate_exact_size(vec2(width, row_height), Sense::hover());
-    let text = format!("{}.", number);
+    let text = format!("{number}.");
     let text_color = ui.visuals().strong_text_color();
     ui.painter().text(
         rect.right_center(),
