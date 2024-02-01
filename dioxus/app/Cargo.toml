@@ -23,7 +23,7 @@ web = [
 ]
 
 daisyui = [
-    "web"
+    "web",
     "dioxus-daisyui",
 ]
 
@@ -33,6 +33,8 @@ all = [
 ]
 
 [dependencies]
+edger_dioxus_util = { workspace = true }
+
 dioxus = { workspace = true }
 dioxus-web = { workspace = true, optional = true }
 dioxus-ssr = { workspace = true, optional = true }
