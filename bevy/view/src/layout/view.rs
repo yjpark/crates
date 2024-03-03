@@ -51,7 +51,7 @@ where
                         layout
                     );
                 }
-                evts.send(Self::new(entity, view, layout))
+                evts.send(Self::new(entity, view, layout));
             }
         }
     }

@@ -7,7 +7,7 @@ pub fn spawn(
     font: Handle<Font>,
     font_size: f32,
     color: Color,
-    alignment: TextAlignment,
+    justify: JustifyText,
     anchor: Anchor,
     x: f32,
     y: f32,
@@ -20,7 +20,7 @@ pub fn spawn(
     };
     let text_entity = commands
         .spawn(Text2dBundle {
-            text: Text::from_section(text, style).with_alignment(alignment),
+            text: Text::from_section(text, style).with_justify(justify),
             transform: Transform::from_xyz(x, y, z),
             text_anchor: anchor,
             ..Default::default()
