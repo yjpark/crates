@@ -12,12 +12,6 @@ members = [
     "common/config",
     "common/template",
 
-    "bevy/app",
-    "bevy/view",
-    "bevy/shape",
-    "bevy/egui",
-    "bevy/util",
-
     "tui/app",
     "tui/util",
 ]
@@ -27,12 +21,6 @@ edger_args = { path = "common/args" }
 edger_config = { path = "common/config" }
 edger_template = { path = "common/template" }
 edger_tree = { path = "common/tree" }
-
-edger_bevy_app = { path = "bevy/app" }
-edger_bevy_egui = { path = "bevy/egui" }
-edger_bevy_view = { path = "bevy/view" }
-edger_bevy_shape = { path = "bevy/shape" }
-edger_bevy_util = { path = "bevy/util" }
 
 edger_tui_app = { path = "tui/app" }
 edger_tui_util = { path = "tui/util" }
@@ -59,20 +47,3 @@ tracing = "0.1.37"
 tracing-subscriber = "0.3.17"
 tracing-log = "0.2.0"
 clap-verbosity-flag = "2.0.1"
-
-# Bevy
-bevy = { version = "0.13.0", default-features = false }
-bevy_egui = { version = "0.25.0" }
-bevy_prototype_lyon = "0.11.0"
-anyhow = "1.0.80"
-
-# [target.'cfg(target_arch = "wasm32")'.workspace.dependencies]
-wasm-bindgen = "0.2.91"
-console_error_panic_hook = "0.1.7"
-gloo-events = "0.2.0"
-futures = "0.3.30"
-web-sys = { version = "0.3.64", features = [
-    "Element", "Document", "Window", "Location", "Url", "UrlSearchParams", "console", "TouchEvent",
-    #https://rustwasm.github.io/docs/wasm-bindgen/examples/web-audio.html
-    "AudioContext", "AudioDestinationNode", "AudioNode", "AudioParam", "GainNode", "OscillatorNode", "OscillatorType",
-]}
